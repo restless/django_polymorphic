@@ -8,8 +8,11 @@ Please see LICENSE and AUTHORS for more information.
 """
 from __future__ import absolute_import
 import django
-from .showfields import ShowFieldContent, ShowFieldType, ShowFieldTypeAndContent
-from .showfields import ShowFields, ShowFieldTypes, ShowFieldsAndTypes  # import old names for compatibility
+
+
+if django.VERSION[:2] < (1, 9):
+    from .showfields import ShowFieldContent, ShowFieldType, ShowFieldTypeAndContent
+    from .showfields import ShowFields, ShowFieldTypes, ShowFieldsAndTypes  # import old names for compatibility
 
 
 # Monkey-patch Django < 1.5 to allow ContentTypes for proxy models.
